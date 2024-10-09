@@ -1,13 +1,13 @@
 import numpy as np
+from data_setup import setup
 
-X = [[1, 2, 3, 2.5],
-     [2.0, 5.0, -1.0, 2.0],
-     [-1.5, 2.7, 3.3, -0.8]]
+X_train, X_test, y_train, y_test = setup()
 
 class LinearLayer:
     def __init__(self, n_inputs, n_neurons):
         self.weights = 0.10 * np.random.randn(n_inputs, n_neurons)
         self.biases = np.zeros((1, n_neurons))
+
     def forward(self, inputs):
         return np.dot(inputs, self.weights) + self.biases
 
@@ -15,21 +15,25 @@ class ReLU:
     def forward(self, inputs):
         return np.maximum(0, inputs)
 
-linear_layer = LinearLayer(4, 5)
-activation_function = ReLU()
-print('tak')
-print(linear_layer)
-print(activation_function)
+class MeanSquaredError:
+    def __init__(self, y_true, y_pred):
+        self.y_true = y_true
+        self.y_pred = y_pred
 
-linear_layer = linear_layer.forward(X)
+        self.calculate_mae()
 
-print(linear_layer)
-
-linear_layer = activation_function.forward(linear_layer)
-
-print(linear_layer)
-
-class MultiLayerPerceptron:
-    def __init__(self):
+    def calculate_mae(self):
+        return np.square(self.y_true - self.y_pred).mean()
+    
+    def backward(self):
         pass
+
+epochs = 3
+
+for i in range(epochs):
+    y_pred = LinearLayer(1, 1).forward(X_train)
+
+    train_loss = MeanSquaredError(y_train, y_pred)
+    print(train_loss.calculate_mae())
+
     

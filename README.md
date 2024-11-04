@@ -1,6 +1,6 @@
 # Multi-Layer Perceptron (MLP) from Scratch
 ## Overview
-This project implements a simple Multi-Layer Perceptron (MLP) from scratch in Python without the use of any external machine learning libraries (such as TensorFlow, PyTorch, or even NumPy). The MLP is designed to perform classification tasks, and includes forward propagation, backpropagation, and gradient descent for training the model.
+This project implements a simple Multi-Layer Perceptron (MLP) from scratch in Python without the use of any external machine learning libraries (such as TensorFlow, PyTorch). The MLP is designed to perform classification tasks, and includes forward propagation, backpropagation, and gradient descent for training the model.
 
 ## Features
 Customizable neural network with a variable number of layers and neurons.
